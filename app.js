@@ -4,7 +4,11 @@ const students=require('./student')
 
    
 
-    
+const sumDegrees=(degree)=>{
+    let  totaldegree=0
+     degree.forEach((object)=>totaldegree +=object)
+   return   totaldegree
+}
 
 yargs.command({
     command:'add',
@@ -34,13 +38,6 @@ yargs.command({
 }, 
    handler:(x)=>{
       
-     const sumDegrees=(degree)=>{
-        let  totaldegree=0
-         degree.forEach((object)=>totaldegree +=object)
-       return   totaldegree
-
-     }
-    
      students.addStudent(x.id,x.name, sumDegrees(x.degrees),x.comment)
    }
 })
@@ -84,4 +81,6 @@ yargs.command({
        students.readStudent(x.id)
    }
 })
+
+
 yargs.parse()
